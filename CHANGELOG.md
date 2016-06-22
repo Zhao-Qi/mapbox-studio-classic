@@ -1,6 +1,54 @@
 Changelog
 =========
 
+### 0.3.8
+
+- Downgraded to Carto v0.15.x to full back compatibility in color parsing.
+
+### 0.3.7
+
+- Upgraded to Carto v0.16.2, fixing regression in CartoCSS color subtraction
+
+### 0.3.6
+
+- Upgraded to Carto v0.16.1, fixing regression in the CartoCSS `mix` function
+- Upgraded to node-mapnik@3.5.13
+
+### 0.3.5
+
+- Zoom to layer extent now works for PostGIS and SQlite sources (#1515)
+- Upgraded to Carto v0.16.0
+- Upgraded to node-mapnik@3.5.10, now supporting the creation of vector tiles
+  adhering to the v2 spec: https://github.com/mapbox/vector-tile-spec/tree/master/2.1
+
+### 0.3.4
+
+- Fixed support for KML and GPX formats
+ - Known issue: GPX file with `<time>` element are broken but will work in the next release  
+- Update tilelive-bridge to validate mapnik XML at source creation
+- `.index` files for shapefiles [are no longer backwards compatible](https://github.com/mapbox/mapbox-studio-classic/issues/1523) and must be regenerated. New index files can be regenerated locally on OS X:
+```
+cd ~/Downloads/mapbox-studio-darwin-x64-v0.3.3
+"Mapbox Studio.app/Contents/Resources/app/vendor/node" "Mapbox Studio.app/Contents/Resources/app/node_modules/mapnik/bin/mapnik-shapeindex.js" <path/to/shapefile.shp>
+```
+- Update node-mapnik (v3.4.18) to support backwards compatible vector tiles (v1/v2)
+- Update node-gdal ([v0.8.0](https://github.com/naturalatlas/node-gdal/releases))
+- Update tilelive-vector to include tm2z bug fixes, `transparent` background support for xray tiles, [etc](https://github.com/mapbox/tilelive-vector/blob/master/CHANGELOG.md)
+- Update mapnik-omnivore with maxzoom adjustments for rasters, shapefile projection bug fix, and dep updates
+- Update minor dependencies
+
+### 0.3.3
+
+- fixes a bug that prevented startup on fresh installation of Mapbox Studio Classic
+
+### 0.3.2
+
+- Updated to use node-mapnik 3.4.9
+- Vector tile sizes reduced due to removing repeated points in polylines and multi-polylines
+- Simplify distance reduced from 8 to 4 causing vector tiles that are created to be LESS simplified
+- Fixed various bugs with CSVs
+- Various Vector Tile creation speed improvements
+
 ### 0.3.1
 
 - Updated to use node-mapnik 3.4.7
